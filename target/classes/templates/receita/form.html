@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+
+<meta charset="UTF-8">
+<div layout:fragment="content">
+    <div class="alert alert-primary" th:if="${mensagem != null}" th:text="${mensagem}">
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <p class="text-primary">Nova Receita</p>
+        </div>
+        <div class="card-body">
+            <form method="POST" th:object="${receita}" th:action="@{/receita/editar}">
+                <input type="hidden" th:field="*{id}">
+                <div class="form-group mb-3">
+                    <label for="nome">Nome:</label>
+                    <input
+                            class="form-control" type="text" th:field="*{nome}" required/>
+                    <div class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="descricao">Descrição:</label>
+                    <input
+                            class="form-control" type="text" th:field="*{descricao}" maxlength="2000" required/>
+                    <div class="text-danger" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="categoria">Categoria:</label>
+                    <input
+                            class="form-control" type="text" th:field="*{categoria}" maxlength="50" required/>
+                    <div class="text-danger" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></div>
+                <div class="form-group mb-3">
+                    <label for="ingredientes">Ingredientes:</label>
+                    <input
+                            class="form-control" type="text" th:field="*{ingredientes}" required/>
+                    <div class="text-danger" th:if="${#fields.hasErrors('ingredientes')}" th:errors="*{ingredientes}"></div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="modoDePreparo">Dica:</label>
+                    <input
+                            class="form-control"  type="text" th:field="*{modoDePreparo}"
+                            required/>
+                    <div class="text-danger" th:if="${#fields.hasErrors('modoDePreparo')}" th:errors="*{modoDePreparo}"></div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="rendimento">Rendimento:</label>
+                    <input
+                            class="form-control"  type="text" th:field="*{rendimento}"
+                            required/>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="tempoDePreparo">Tempo de Preparo:</label>
+                    <input
+                            class="form-control" step="0.01" min="0.01" type="number" th:field="*{tempoDePreparo}"
+                            required/>
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar
+                    Receita</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</html>

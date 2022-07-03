@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<meta charset="UTF-8">
+<div layout:fragment="content">
+    <div class="alert alert-primary" th:if="${mensagem != null}" th:text="${mensagem}">
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <p class="text-primary">Nova unidade de Medida</p>
+        </div>
+        <div class="card-body">
+            <form method="POST" th:object="${unidade}" th:action="@{/unidade/novo}">
+                <input type="hidden" th:field="*{id}">
+                <div class="form-group mb-3">
+                    <label for="xicara">Xicaras:</label>
+                    <input
+                            class="form-control" type="text" th:field="*{xicara}" required/>
+                    <div class="text-danger" th:if="${#fields.hasErrors('xicara')}" th:errors="*{xicara}"></div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="litros">Litros:</label>
+                    <input
+                            class="form-control" type="text" th:field="*{litros}" required/>
+                    <div class="text-danger" th:if="${#fields.hasErrors('litros')}" th:errors="*{litros}"></div>
+                </div>
+                <div class="form-group mb-3">
+                    
+                    <label for="gramas">Gramas:</label>
+                
+                    <input
+                            class="form-control" type="text" th:field="*{gramas}" required></input>
+                    <div class="text-danger" th:if="${#fields.hasErrors('gramas')}" th:errors="*{gramas}"></div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="colherDeCha">Quantidade de colher Sopa</label >
+                    <input
+                            class="form-control" type="text" th:field="*{colherDeCha}" required></input>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="colherDeSopa">Quantidade de colher Chá</label >
+                    <input
+                            class="form-control" type="text" th:field="*{colherDeSopa}" required></input>
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar
+                    Unidade de Medida</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+</html>

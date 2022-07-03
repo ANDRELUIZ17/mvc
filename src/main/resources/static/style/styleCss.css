@@ -1,0 +1,49 @@
+.detalhesEvento{
+	box-shadow: 0px 0px 5px grey;
+	padding-top: 20px;
+	padding-left: 20px;
+	margin-bottom: 60px;
+}
+
+.formConvidado{
+	box-shadow: 0px 0px 5px grey;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-bottom: 10px;
+	margin-bottom: 60px;
+}
+
+.tabelaConvidado{
+	width: 50%;
+}
+
+.formEvento{
+	box-shadow: 0px 0px 5px grey;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-bottom: 10px;
+	margin-bottom: 60px;
+}
+
+.menu{
+	background-color: #3399ff;
+}
+@import url(https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap);
+*
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+section
+{
+	position: relative;
+	width: 100%;
+	min-height: 100vh;
+	padding: 100px;
+	display: flex;
+	justify-content: space-between;
+	align-items: inherit;
+	background-color: #f5f5f5;
+}

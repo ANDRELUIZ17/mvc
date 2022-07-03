@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style/styleCss.css">
+<div layout:fragment="content">
+    <div class="alert alert-primary" th:if="${#lists.isEmpty(lista)}">
+        Nenhuma linguagem cadastrada
+    </div>
+    <div class="alert alert-primary" th:if="${mensagem != null}" th:text="${mensagem}"></div>
+    <div th:if="${not #lists.isEmpty(lista)}">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Xicara</th>
+                <th>Colher de Chá</th>
+                <th>Colher de Sopa</th>
+                <th>Gramas</th>
+                <th>Litros</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="unidade : ${lista}">
+                <td th:text="${unidade.id}"></td>
+                <td th:text="${unidade.xicara}"></td>
+                <td th:text="${unidade.colherDeSopa}"></td>
+                <td th:text="${unidade.colherDeCha}"></td>
+                <td th:text="${unidade.gramas}"></td>
+                <td th:text="${unidade.litros}"></td>
+
+                <td><a class="btn btn-primary btn-sm" th:href="@{/unidade/editar(id=${unidade.id})}">Editar</a>
+                    <a class="btn btn-primary btn-sm" th:href="@{/unidade/excluir(id=${unidade.id})}" onclick="return confirm('Você realmente deseja excluir essa linguagem?')">Excluir</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</html>
